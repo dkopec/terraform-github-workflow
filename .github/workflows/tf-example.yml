@@ -1,28 +1,28 @@
 name: Example Terraform Workflow
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    call-terraform-workflow:
-        uses: ./.github/workflows/tf-workflow-template.yml
-        with:
-            approvers: 'dkopec'
-            app-env: 'prod'
-            environment: 'production'
-            infra-repo: ${{ github.repository }}
-            infra-ref: ${{ github.ref }}
-            terraform-version: '1.9.5'
-            terraform-environment-dir: 'envs'
-        secrets:
-            AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-            AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-            AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-            GITHUB_PAT: ${{ github.token}}
-        # You can also simply set
-        # secrets: inherit
+  call-terraform-workflow:
+    uses: ./.github/workflows/tf-workflow-template.yml
+    with:
+      approvers: 'dkopec'
+      app-env: 'prod'
+      environment: 'production'
+      infra-repo: ${{ github.repository }}
+      infra-ref: ${{ github.ref }}
+      terraform-version: '1.9.5'
+      terraform-environment-dir: 'envs'
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      GITHUB_PAT: ${{ github.token }}
+    # You can also simply set
+    # secrets: inherit
