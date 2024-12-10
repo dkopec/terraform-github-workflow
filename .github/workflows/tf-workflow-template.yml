@@ -77,7 +77,7 @@ jobs:
       - name: Checkout Infrastructure Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_PAT }}
+          #token: ${{ secrets.GITHUB_PAT }}
           repository: ${{ inputs.infra-repo }}
           ref: ${{ github.repository != inputs.infra-repo && inputs.infra-ref || github.event_name == 'push' && github.ref || github.event_name == 'pull_request' && github.event.pull_request.head.ref }}
           path: ${{ env.TERRAFORM_CODE_DIR }}
